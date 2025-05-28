@@ -1,169 +1,115 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timers</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom styles for the message box */
-        .message-box-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
+<html>
+ <head>
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<title>Timers</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+ 	<style>
+ 		body {
+ 		font-family: 'Montserrat', sans-serif;
+ 			background-color: #f8f4f2;
+ 			text-align: center;
+ 			padding-top: 31px;
+ 		}
 
-        .message-box {
-            background-color: #ffffff;
-            padding: 2rem;
-            border-radius: 0.75rem; /* Rounded corners */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 90%;
-            font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
-        }
+ 		h1 {
+ 			color: #373433;
+ 			font-size: 50px;
+ 			margin-bottom: 29px;
+ 			animation: pulse 10s ease infinite;
+ 		}
 
-        .message-box-button {
-            background-color: #373433; /* Dark gray for button */
-            color: #ffffff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem; /* Rounded corners */
-            margin-top: 1.5rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+ 		@keyframes pulse {
+ 			0% {
+ 				transform: scale(1);
+ 			}
+ 			50% {
+ 				transform: scale(1.0	);
+ 			}
+ 			100% {
+ 				transform: scale(1);
+ 			}
+ 		}
 
-        .message-box-button:hover {
-            background-color: #555555; /* Slightly lighter dark gray on hover */
-        }
-    </style>
-</head>
-<body class="font-montserrat bg-[#f8f4f2] text-center pt-8">
-    <h1 class="text-[#333333] text-5xl mb-7 font-bold">Timers</h1>
+ 		button {
+ 			background-color: #fdfcfb;
+ 			border: none;
+ 			color: #373433;
+ 			padding: 16px 32px;
+ 			text-align: center;
+ 			border-radius: 20px;
+ 			font-size: 24px;
+ 			margin: 10px;
+ 			cursor: pointer;
+ 			transition: all 0.3s ease;
+ 			box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+ 		}
 
-    <div class="container mx-auto p-4 max-w-4xl">
-        <div class="section mb-2 p-2">
-            <h2 class="text-2xl font-semibold mb-4 text-[#333333]">Niamh's Timers</h2>
-            <button class="button bg-[#fdfcfb] text-[#373433] py-4 px-8 rounded-2xl text-2xl m-2 cursor-pointer transition-all duration-300 shadow-md hover:bg-[#f2f0ed] hover:shadow-lg hover:-translate-y-0.5">5 mins</button>
-            <button class="button bg-[#fdfcfb] text-[#373433] py-4 px-8 rounded-2xl text-2xl m-2 cursor-pointer transition-all duration-300 shadow-md hover:bg-[#f2f0ed] hover:shadow-lg hover:-translate-y-0.5">25 mins</button>
-        </div>
+ 		button:hover {
+ 			background-color: #e0dedc;
+ 			box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+ 			transform: translateY(-2px);
+ 		}
 
-        <div class="section mb-2 p-2">
-            <h2 class="text-2xl font-semibold mb-4 text-[#333333]">Normal Timers</h2>
-            <button class="button bg-[#fdfcfb] text-[#373433] py-4 px-8 rounded-2xl text-2xl m-2 cursor-pointer transition-all duration-300 shadow-md hover:bg-[#f2f0ed] hover:shadow-lg hover:-translate-y-0.5">15 mins</button>
-            <button class="button bg-[#fdfcfb] text-[#373433] py-4 px-8 rounded-2xl text-2xl m-2 cursor-pointer transition-all duration-300 shadow-md hover:bg-[#f2f0ed] hover:shadow-lg hover:-translate-y-0.5">30 mins</button>
-            <button class="button bg-[#fdfcfb] text-[#373433] py-4 px-8 rounded-2xl text-2xl m-2 cursor-pointer transition-all duration-300 shadow-md hover:bg-[#f2f0ed] hover:shadow-lg hover:-translate-y-0.5">45 mins</button>
-            <button class="button bg-[#fdfcfb] text-[#373433] py-4 px-8 rounded-2xl text-2xl m-2 cursor-pointer transition-all duration-300 shadow-md hover:bg-[#f2f0ed] hover:shadow-lg hover:-translate-y-0.5">1 hr</button>
-        </div>
+ 		#made-by {
+ 			margin-top: 30px;
+ 			color: #373433;
+ 			font-size: 19px;
+ 		}
+ 	</style>
 
-        <div class="section mb-2 p-2">
-            <h2 class="text-2xl font-semibold mb-4 text-[#333333]">Exam Timers</h2>
-            <button class="button bg-[#fdfcfb] text-[#373433] py-4 px-8 rounded-2xl text-2xl m-2 cursor-pointer transition-all duration-300 shadow-md hover:bg-[#f2f0ed] hover:shadow-lg hover:-translate-y-0.5">1 hr</button>
-            <button class="button bg-[#fdfcfb] text-[#373433] py-4 px-8 rounded-2xl text-2xl m-2 cursor-pointer transition-all duration-300 shadow-md hover:bg-[#f2f0ed] hover:shadow-lg hover:-translate-y-0.5">1 hr 30 mins</button>
-            <button class="button bg-[#fdfcfb] text-[#373433] py-4 px-8 rounded-2xl text-2xl m-2 cursor-pointer transition-all duration-300 shadow-md hover:bg-[#f2f0ed] hover:shadow-lg hover:-translate-y-0.5">1 hr 45 mins</button>
-            <button class="button bg-[#fdfcfb] text-[#373433] py-4 px-8 rounded-2xl text-2xl m-2 cursor-pointer transition-all duration-300 shadow-md hover:bg-[#f2f0ed] hover:shadow-lg hover:-translate-y-0.5">2 hr</button>
-        </div>
-    </div>
+ 	<script>
+ 		var startTime = localStorage.getItem("startTime");
 
-    <p id="made-by" class="mt-8 text-[#666666] text-lg">Made by Keelan</p>
+ 		function startTimer(minutes) {
+ 			startTime = Date.now();
+ 			localStorage.setItem("startTime", startTime);
+ 			localStorage.setItem("minutes", minutes);
+ 			var timer = setInterval(function() {
+ 				var elapsed = Date.now() - startTime;
+ 				var remaining = localStorage.getItem("minutes") * 60 * 1000 - elapsed;
+ 				if (remaining <= 0) {
+ 					clearInterval(timer);
+ 					document.title = "Time's up!";
+ 					alert("This timer is over");
+ 				} else {
+ 					var minutes = Math.floor(remaining / (60 * 1000));
+ 					var seconds = Math.floor((remaining % (60 * 1000)) / 1000);
+ 					if (minutes >= 60) {
+ 						var hours = Math.floor(minutes / 60);
+ 						minutes = minutes % 60;
+ 						document.title = hours + ":" + (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds + " remaining";
+ 					} else {
+ 						document.title = minutes + ":" + (seconds < 10 ? "0" : "") + seconds + " remaining";
+ 					}
+ 				}
+ 			}, 1000);
+ 		}
+ 	</script>
+ </head>
+ <body>
+ 	<h1>Timers</h1>
 
-    <script>
-        // Retrieve startTime from localStorage
-        var startTime = localStorage.getItem("startTime");
-        var timerInterval; // Variable to hold the interval ID
+ 	<div class="container">
+ 				<div class="section">
+ 			<h2>Niamh's Timers</h2>
+ 			<button class="button" onclick="startTimer(5)">5 mins</button>
+ 			<button class="button" onclick="startTimer(25)">25 mins</button>
+ 		</div><div class="section">
+ 			<h2>Normal Timers</h2>
+ 			<button class="button" onclick="startTimer(15)">15 mins</button>
+ 			<button class="button" onclick="startTimer(30)">30 mins</button>
+ 			<button class="button" onclick="startTimer(45)">45 mins</button>
+ 			<button class="button" onclick="startTimer(60)">1 hr</button>
+ 		</div>
 
-        // Function to display a custom message box
-        function showMessageBox(message) {
-            const overlay = document.createElement('div');
-            overlay.className = 'message-box-overlay';
+ 		<div class="section">
+ 			<h2>Exam Timers</h2>
+ 			<button class="button" onclick="startTimer(60)">1 hr</button>
+ 			<button class="button" onclick="startTimer(90)">1 hr 30 mins</button>
+ 			<button class="button" onclick="startTimer(105)">1 hr 45 mins</button>
+ 			<button class="button" onclick="startTimer(120)">2 hr</button>
+ 		</div>
 
-            const messageBox = document.createElement('div');
-            messageBox.className = 'message-box';
-            messageBox.innerHTML = `<p class="text-xl font-medium mb-4">${message}</p><button class="message-box-button" onclick="this.closest('.message-box-overlay').remove()">OK</button>`;
-
-            overlay.appendChild(messageBox);
-            document.body.appendChild(overlay);
-        }
-
-        // Function to start the timer
-        function startTimer(minutes) {
-            // Clear any existing timer to prevent multiple timers running
-            if (timerInterval) {
-                clearInterval(timerInterval);
-            }
-
-            startTime = Date.now(); // Record the start time
-            localStorage.setItem("startTime", startTime); // Store start time in localStorage
-            localStorage.setItem("minutes", minutes); // Store total minutes for the timer
-
-            // Update the document title immediately
-            updateTimerDisplay();
-
-            // Set up the interval to update the timer every second
-            timerInterval = setInterval(updateTimerDisplay, 1000);
-        }
-
-        // Function to update the timer display
-        function updateTimerDisplay() {
-            var elapsed = Date.now() - startTime; // Calculate elapsed time
-            var totalMinutes = localStorage.getItem("minutes");
-            var remaining = totalMinutes * 60 * 1000 - elapsed; // Calculate remaining time
-
-            if (remaining <= 0) {
-                // If time is up, clear the interval, update title, and show message
-                clearInterval(timerInterval);
-                document.title = "Time's up!";
-                showMessageBox("This timer is over!");
-                // Clear localStorage items related to the timer
-                localStorage.removeItem("startTime");
-                localStorage.removeItem("minutes");
-            } else {
-                // Calculate minutes and seconds remaining
-                var minutes = Math.floor(remaining / (60 * 1000));
-                var seconds = Math.floor((remaining % (60 * 1000)) / 1000);
-
-                // Format the title based on remaining time (hours, minutes, seconds)
-                if (minutes >= 60) {
-                    var hours = Math.floor(minutes / 60);
-                    minutes = minutes % 60;
-                    document.title = `${hours}:${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds} remaining`;
-                } else {
-                    document.title = `${minutes}:${seconds < 10 ? "0" : ""}${seconds} remaining`;
-                }
-            }
-        }
-
-        // On page load, if a timer was previously running, resume it
-        window.onload = function() {
-            if (startTime && localStorage.getItem("minutes")) {
-                // If there's a stored start time and minutes, resume the timer
-                // Recalculate startTime to account for page reload duration
-                const storedMinutes = parseInt(localStorage.getItem("minutes"));
-                const storedStartTime = parseInt(localStorage.getItem("startTime"));
-                const now = Date.now();
-                const elapsedSinceStoredStart = now - storedStartTime;
-                const totalDuration = storedMinutes * 60 * 1000;
-
-                if (elapsedSinceStoredStart < totalDuration) {
-                    // Only resume if there's still time left
-                    startTime = storedStartTime; // Use the original start time
-                    startTimer(storedMinutes); // Resume the timer with the original duration
-                } else {
-                    // If time has already elapsed, clear stored data and show message
-                    localStorage.removeItem("startTime");
-                    localStorage.removeItem("minutes");
-                    document.title = "Timers"; // Reset title
-                    showMessageBox("The previous timer has already ended.");
-                }
-            }
-        };
-    </script>
-</body>
-</html>
+ 	<p id="made-by">Made by Keelan</p>
+ </body>
+ </html>
